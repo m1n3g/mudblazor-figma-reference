@@ -1,0 +1,62 @@
+<MudStack>
+    <MudAvatar Variant="Variant.Text" Color="Color.Primary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Filled" Color="Color.Secondary">U</MudAvatar>
+    <MudAvatar Variant="Variant.Outlined" Color="Color.Tertiary">D</MudAvatar>
+    <MudAvatar Variant="Variant.Filled" Square="true" Color="Color.Primary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Filled" Rounded="true" Color="Color.Primary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Primary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Square="true" Color="Color.Primary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Rounded="true" Color="Color.Primary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Secondary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Tertiary">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Info">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Success">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Warning">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Error">M</MudAvatar>
+    <MudAvatar Variant="Variant.Text" Color="Color.Dark">M</MudAvatar>
+</MudStack>
+
+<MudStack>
+    <MudAvatarGroup Max="@max" Spacing="@spacing" MaxColor="Color.Primary">
+        <MudAvatar Color="Color.Info" Variant="Variant.Outlined">M</MudAvatar>
+        <MudAvatar Color="Color.Success" Variant="Variant.Outlined">K</MudAvatar>
+        <MudAvatar Color="Color.Warning" Variant="Variant.Outlined">J</MudAvatar>
+
+    </MudAvatarGroup>
+
+
+    <MudAvatarGroup Max="@max" Spacing="@spacing" MaxColor="Color.Primary">
+        <MudAvatar>
+            <MudImage Src="images/jonny.jpg" />
+        </MudAvatar>
+        <MudAvatar>
+            <MudImage Src="images/mony.jpg" />
+        </MudAvatar>
+        <MudAvatar>
+            <MudImage Src="images/toiletvisit.jpg" />
+        </MudAvatar>
+        <MudAvatar>
+            <MudImage Src="images/jonny.jpg" />
+        </MudAvatar>
+        <MudAvatar>
+            <MudImage Src="images/mony.jpg" />
+        </MudAvatar>
+        <MudAvatar>
+            <MudImage Src="images/toiletvisit.jpg" />
+        </MudAvatar>
+    </MudAvatarGroup>
+</MudStack>
+
+<MudGrid>
+    <MudItem xs="12" sm="6">
+        <MudSlider Min="0" Max="16" Step="0" @bind-Value="spacing" Color="Color.Error">Spacing</MudSlider>
+    </MudItem>
+    <MudItem xs="12" sm="6">
+        <MudSlider Min="0" Max="6" Step="0" @bind-Value="max" Color="Color.Info">Max Avatars</MudSlider>
+    </MudItem>
+</MudGrid>
+
+@code {
+    int max = 3;
+    int spacing = 0;
+}
