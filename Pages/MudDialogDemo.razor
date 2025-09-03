@@ -1,0 +1,132 @@
+@page "/components/dialog"
+@using MudBlazor
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<MudStack Spacing="2">
+
+    <MudText Typo="Typo.h6">Dialog demos</MudText>
+
+    <!-- Launchers -->
+    <MudPaper Class="pa-3">
+        <MudStack Row Spacing="1" Class="align-center">
+            <MudButton OnClick="OpenScrollableAsync">Scrollable dialog</MudButton>
+
+            <MudDivider Vertical="true" Class="mx-1" />
+
+            <MudButton OnClick="@(() => OpenDialogAsync(_maxWidth))">MaxWidth dialog</MudButton>
+            <MudButton OnClick="@(() => OpenDialogAsync(_closeButton))" Color="Color.Primary">Close Button dialog
+            </MudButton>
+            <MudButton OnClick="@(() => OpenDialogAsync(_fullScreen))" Color="Color.Info">Full Screen dialog</MudButton>
+            <MudButton OnClick="@(() => OpenDialogAsync(_topCenter))" Color="Color.Success">Top Center dialog
+            </MudButton>
+
+            <MudDivider Vertical="true" Class="mx-1" />
+
+            <MudButton OnClick="@(() => OpenDeleteAsync(_servers[1]))" Color="Color.Error">Passing data (delete)
+            </MudButton>
+        </MudStack>
+    </MudPaper>
+
+    <MudText Typo="Typo.subtitle2" Class="mt-2">Last result: @_lastResult</MudText>
+
+    <!-- Simple list for the "passing data" example -->
+    <MudPaper Class="pa-3 mt-4">
+        <MudText Typo="Typo.subtitle1">Servers</MudText>
+        <MudTable Items="_servers" Dense="true">
+            <HeaderContent>
+                <MudTh>Id</MudTh>
+                <MudTh>Name</MudTh>
+                <MudTh>Location</MudTh>
+                <MudTh>IP</MudTh>
+                <MudTh></MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Id">@context.Id</MudTd>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Location">@context.Location</MudTd>
+                <MudTd DataLabel="IP">@context.Ip</MudTd>
+                <MudTd>
+                    <MudButton Color="Color.Error" Variant="Variant.Text" OnClick="@(() => OpenDeleteAsync(context))">
+                        Delete
+                    </MudButton>
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudPaper>
+
+</MudStack>
+
+@code {
+    private string _lastResult = "—";
+
+    // ---- Options for the four new dialogs ----
+    private readonly DialogOptions _maxWidth = new() { MaxWidth = MaxWidth.Medium, FullWidth = true };
+    private readonly DialogOptions _closeButton = new() { CloseButton = true };
+    private readonly DialogOptions _fullScreen = new() { FullScreen = true, CloseButton = true };
+    private readonly DialogOptions _topCenter = new() { Position = DialogPosition.TopCenter };
+
+    // Sample data for "passing data"
+    private readonly List<ServerRow> _servers =
+    [
+    new(Guid.NewGuid(), "Server1", "USA", "10.0.0.1"),
+new(Guid.NewGuid(), "Server2", "Sweden", "127.0.0.1"),
+new(Guid.NewGuid(), "Server3", "Japan", "172.16.1.5")
+    ];
+
+    // ---- Launchers ----
+    private async Task OpenDialogAsync(DialogOptions options)
+    {
+        var h = await DialogService.ShowAsync<Dialog>("Custom Options Dialog", options);
+        DialogResult? result = await h.Result;
+
+        if (result is { Canceled: false })
+        {
+            _lastResult = "OK clicked";
+            Snackbar.Add("Confirmed!", Severity.Success);
+        }
+        else
+        {
+            _lastResult = "Canceled";
+            Snackbar.Add("Canceled", Severity.Info);
+        }
+    }
+
+    private async Task OpenScrollableAsync()
+    {
+        var h = await DialogService.ShowAsync<DialogScrollable>("Scrollable content",
+        new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseOnEscapeKey = true });
+
+        DialogResult? result = await h.Result;
+        _lastResult = result is { Canceled: false } ? "OK clicked" : "Canceled";
+    }
+
+    private async Task OpenDeleteAsync(ServerRow s)
+    {
+        var parms = new DialogParameters<DeleteServerDialog>
+{
+{ x => x.ServerId, s.Id },
+{ x => x.ServerName, s.Name },
+{ x => x.Location, s.Location },
+{ x => x.IpAddress, s.Ip }
+};
+
+        var opts = new DialogOptions { CloseButton = true, FullWidth = true, MaxWidth = MaxWidth.Small };
+        var h = await DialogService.ShowAsync<DeleteServerDialog>("Delete server?", parms, opts);
+        DialogResult? result = await h.Result;
+
+        if (result is { Canceled: false })
+        {
+            _servers.RemoveAll(r => r.Id == s.Id);
+            _lastResult = $"Deleted: {s.Name}";
+            Snackbar.Add($"Deleted {s.Name}", Severity.Success);
+        }
+        else
+        {
+            _lastResult = "Canceled";
+            Snackbar.Add("Canceled", Severity.Info);
+        }
+    }
+
+    private record ServerRow(Guid Id, string Name, string Location, string Ip);
+}

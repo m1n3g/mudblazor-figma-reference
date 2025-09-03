@@ -1,63 +1,97 @@
-﻿<MudNavMenu>
+﻿<MudNavMenu Color="Color.Primary">
     <!-- Home -->
-    <MudNavLink Href="/" Icon="@Icons.Material.Filled.Home" Match="NavLinkMatch.All">
+    <MudNavLink Href="/" Match="NavLinkMatch.All">
         Home
     </MudNavLink>
 
     <!-- Basics -->
-    <MudNavGroup Title="Basics" Icon="@Icons.Material.Filled.Category" Expanded="true">
-        <MudNavLink Href="/counter" Icon="@Icons.Material.Filled.AddBox">Counter</MudNavLink>
-        <MudNavLink Href="/weather" Icon="@Icons.Material.Filled.CloudQueue">Weather</MudNavLink>
+    <MudNavGroup Title="Basics" Expanded="false">
+        <MudNavLink Href="/counter">Counter</MudNavLink>
+        <MudNavLink Href="/weather">Weather</MudNavLink>
     </MudNavGroup>
 
-    <!-- Buttons -->
-    <MudNavGroup Title="Buttons" Icon="@Icons.Material.Filled.SmartButton" Expanded="false">
-        <MudNavLink Href="/components/button" Icon="@Icons.Material.Filled.SmartButton">Button</MudNavLink>
-        <MudNavLink Href="/components/buttonfab" Icon="@Icons.Material.Filled.AddCircle">FAB</MudNavLink>
-        <MudNavLink Href="/components/buttongroup" Icon="@Icons.Material.Filled.ViewStream">Button Group</MudNavLink>
-        <MudNavLink Href="/components/iconbutton" Icon="@Icons.Material.Filled.TouchApp">Icon Button</MudNavLink>
-        <MudNavLink Href="/components/toggleiconbutton" Icon="@Icons.Material.Filled.ToggleOn">Toggle Button</MudNavLink>
+    <!-- Components -->
+    <MudNavGroup Title="Components" Expanded="true">
+        <MudNavLink Href="/components/alert">Alert</MudNavLink>
+        <MudNavLink Href="/components/appbar">App Bar</MudNavLink>
+        <MudNavLink Href="/components/avatar">Avatar</MudNavLink>
+        <MudNavLink Href="/components/badge">Badge</MudNavLink>
+        <MudNavLink Href="/components/breadcrumbs">Breadcrumbs</MudNavLink>
+
+        <!-- Buttons -->
+        <MudNavGroup Title="Buttons" Expanded="false">
+            <MudNavLink Href="/components/button">Button</MudNavLink>
+            <MudNavLink Href="/components/buttonfab">Button FAB</MudNavLink>
+            <MudNavLink Href="/components/buttongroup">Button Group</MudNavLink>
+            <MudNavLink Href="/components/iconbutton">Icon Button</MudNavLink>
+        </MudNavGroup>
+        <MudNavLink Href="/components/card">Card</MudNavLink>
+        <MudNavLink Href="/components/carousel">Carousel</MudNavLink>
+
+        <!-- Charts -->
+        <MudNavGroup Title="Charts" Expanded="false">
+            <MudNavLink Href="/components/barchart">Bar Chart</MudNavLink>
+            <MudNavLink Href="/components/donutchart">Donut Chart</MudNavLink>
+            <MudNavLink Href="/components/heatmapchart">Heatmap Chart</MudNavLink>
+            <MudNavLink Href="/components/linechart">Line Chart</MudNavLink>
+            <MudNavLink Href="/components/piechart">Pie Chart</MudNavLink>
+            <MudNavLink Href="/components/stackedbarchart">Stacked Bar Chart</MudNavLink>
+            <MudNavLink Href="/components/timeserieschart">Time Series Chart</MudNavLink>
+        </MudNavGroup>
+
+        <MudNavLink Href="/components/chat">Chat</MudNavLink>
+        <MudNavLink Href="/components/chipset">Chip Set</MudNavLink>
+        <MudNavLink Href="/components/chips">Chips</MudNavLink>
+        <MudNavLink Href="/components/dialog">Dialog</MudNavLink>
+        <MudNavLink Href="/components/divider">Divider</MudNavLink>
+        <MudNavLink Href="/components/drawer">Drawer</MudNavLink>
+        <MudNavLink Href="/components/expansionpanels">Expansion Panels</MudNavLink>
+
+        <!-- Form & Inputs -->
+        <MudNavGroup Title="Form & Inputs">
+            <MudNavLink Href="/components/autocomplete">Autocomplete</MudNavLink>
+            <MudNavLink Href="/components/checkbox">Check Box</MudNavLink>
+            <MudNavLink Href="/components/field">Field</MudNavLink>
+            <MudNavLink Href="/components/fileupload">File Upload</MudNavLink>
+            <MudNavLink Href="/components/form">Form</MudNavLink>
+            <MudNavLink Href="/components/numericfield">Numeric Field</MudNavLink>
+            <MudNavLink Href="/components/radio">Radio</MudNavLink>
+            <MudNavLink Href="/components/select">Select</MudNavLink>
+            <MudNavLink Href="/components/slider">Slider</MudNavLink>
+            <MudNavLink Href="/components/switch">Switch</MudNavLink>
+            <MudNavLink Href="/components/textfield">Text Field</MudNavLink>
+            <MudNavLink Href="/components/togglegroup">Toggle Group</MudNavLink>
+        </MudNavGroup>
+
+        <MudNavLink Href="/components/link">Link</MudNavLink>
+        <MudNavLink Href="/components/list">List</MudNavLink>
+        <MudNavLink Href="/components/menu">Menu</MudNavLink>
+        <MudNavLink Href="/components/navmenu">Nav Mennu</MudNavLink>
+        <MudNavLink Href="/components/overlay">Overlay</MudNavLink>
+        <MudNavLink Href="/components/pagination">Pagination</MudNavLink>
+        <MudNavLink Href="/components/paper">Paper</MudNavLink>
+
+        <!-- Pickers -->
+        <MudNavGroup Title="Pickers">
+            <MudNavLink Href="/components/colorpicker">Color Picker</MudNavLink>
+            <MudNavLink Href="/components/datepicker">Date Picker</MudNavLink>
+            <MudNavLink Href="/components/daterangepicker">Date Range Picker</MudNavLink>
+            <MudNavLink Href="/components/timepicker">Time Picker</MudNavLink>
+        </MudNavGroup>
+
+        <MudNavLink Href="/components/rating">Rating</MudNavLink>
+        <MudNavLink Href="/components/scrolltotop">Scroll To Top</MudNavLink>
+        <MudNavLink Href="/components/simpletable">Simple Table</MudNavLink>
+        <MudNavLink Href="/components/skeleton">Skeleton</MudNavLink>
+        <MudNavLink Href="/components/snackbar">Snackbar</MudNavLink>
+        <MudNavLink Href="/components/spacer">Spacer</MudNavLink>
+        <MudNavLink Href="/components/stepper">Stepper</MudNavLink>
+        <MudNavLink Href="/components/table">Table</MudNavLink>
+        <MudNavLink Href="/components/tabs">Tabs</MudNavLink>
+        <MudNavLink Href="/components/timeline">Timeline</MudNavLink>
+        <MudNavLink Href="/components/toolbar">Tool Bar</MudNavLink>
+        <MudNavLink Href="/components/tooltip">Tooltip</MudNavLink>
+        <MudNavLink Href="/components/treeview">Tree View</MudNavLink>
+        <MudNavLink Href="/components/typography">Typography</MudNavLink>
     </MudNavGroup>
-
-    <!-- Inputs -->
-    <MudNavGroup Title="Inputs" Icon="@Icons.Material.Filled.Edit" Expanded="false">
-        <MudNavLink Href="/components/checkbox" Icon="@Icons.Material.Filled.CheckBox">Checkbox</MudNavLink>
-        <MudNavLink Href="/components/radio" Icon="@Icons.Material.Filled.RadioButtonChecked">Radio</MudNavLink>
-        <MudNavLink Href="/components/slider" Icon="@Icons.Material.Filled.Tune">Slider</MudNavLink>
-        <MudNavLink Href="/components/switch" Icon="@Icons.Material.Filled.ToggleOn">Switch</MudNavLink>
-        <MudNavLink Href="/components/textfield" Icon="@Icons.Material.Filled.TextFields">TextField</MudNavLink>
-    </MudNavGroup>
-
-    <!-- Data Display -->
-    <MudNavGroup Title="Data Display" Icon="@Icons.Material.Filled.ViewModule" Expanded="false">
-        <MudNavLink Href="/components/alert" Icon="@Icons.Material.Filled.Warning">Alert</MudNavLink>
-        <MudNavLink Href="/components/avatar" Icon="@Icons.Material.Filled.Person">Avatar</MudNavLink>
-        <MudNavLink Href="/components/badge" Icon="@Icons.Material.Filled.Badge">Badge</MudNavLink>
-        <MudNavLink Href="/components/chip" Icon="@Icons.Material.Filled.Label">Chip</MudNavLink>
-        <MudNavLink Href="/components/divider" Icon="@Icons.Material.Filled.HorizontalRule">Divider</MudNavLink>
-    </MudNavGroup>
-
-    <!-- Navigation -->
-    <MudNavGroup Title="Navigation" Icon="@Icons.Material.Filled.Navigation" Expanded="false">
-        <MudNavLink Href="/components/appbar" Icon="@Icons.Material.Filled.ViewDay">AppBar</MudNavLink>
-        <MudNavLink Href="/components/breadcrumbs" Icon="@Icons.Material.Filled.ChevronRight">Breadcrumbs</MudNavLink>
-        <MudNavLink Href="/components/drawer" Icon="@Icons.Material.Filled.MenuOpen">Drawer</MudNavLink>
-        <MudNavLink Href="/components/expansionpanels" Icon="@Icons.Material.Filled.ExpandMore">Expansion Panels</MudNavLink>
-        <MudNavLink Href="/components/tabs" Icon="@Icons.Material.Filled.Tab">Tabs</MudNavLink>
-    </MudNavGroup>
-
-    <!-- Charts -->
-    <MudNavGroup Title="Charts" Icon="@Icons.Material.Filled.PieChart" Expanded="false">
-        <MudNavLink Href="/components/barchart" Icon="@Icons.Material.Filled.BarChart">Bar Chart</MudNavLink>
-        <MudNavLink Href="/components/donutchart" Icon="@Icons.Material.Filled.DonutLarge">Donut Chart</MudNavLink>
-        <MudNavLink Href="/components/linechart" Icon="@Icons.Material.Filled.ShowChart">Line Chart</MudNavLink>
-        <MudNavLink Href="/components/heatmapchart" Icon="@Icons.Material.Filled.GridOn">Heatmap</MudNavLink>
-    </MudNavGroup>
-
-    <MudSpacer />
-
-    <!-- Footer -->
-    <MudText Typo="Typo.caption" Class="pa-3" Align="Align.Center" Color="Color.Secondary">
-        v0.1 • Playground
-    </MudText>
 </MudNavMenu>

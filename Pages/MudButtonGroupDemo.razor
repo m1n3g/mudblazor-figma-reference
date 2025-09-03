@@ -1,0 +1,69 @@
+@page "/components/buttongroup"
+@using MudBlazor
+
+<MudText Typo="Typo.h6" Style="font-weight:700">MudButtonGroup – Customizable</MudText>
+
+<MudPaper Class="pa-4 my-3" Elevation="0" Style="background:#F5F5F5;">
+    <MudGrid>
+
+        <!-- Controls -->
+        <MudItem xs="12" md="4">
+            <MudStack Spacing="2">
+                <MudSelect T="Color" Label="Color" @bind-Value="_color" Dense="true">
+                    <MudSelectItem Value="Color.Default">Default</MudSelectItem>
+                    <MudSelectItem Value="Color.Primary">Primary</MudSelectItem>
+                    <MudSelectItem Value="Color.Secondary">Secondary</MudSelectItem>
+                    <MudSelectItem Value="Color.Tertiary">Tertiary</MudSelectItem>
+                    <MudSelectItem Value="Color.Info">Info</MudSelectItem>
+                    <MudSelectItem Value="Color.Success">Success</MudSelectItem>
+                    <MudSelectItem Value="Color.Warning">Warning</MudSelectItem>
+                    <MudSelectItem Value="Color.Error">Error</MudSelectItem>
+                    <MudSelectItem Value="Color.Dark">Dark</MudSelectItem>
+                </MudSelect>
+
+                <MudSelect T="Variant" Label="Variant" Dense="true" @bind-Value="_variant">
+                    <MudSelectItem Value="Variant.Filled">Filled</MudSelectItem>
+                    <MudSelectItem Value="Variant.Outlined">Outlined</MudSelectItem>
+                    <MudSelectItem Value="Variant.Text">Text</MudSelectItem>
+                </MudSelect>
+
+                <MudStack Row="true" Spacing="3">
+                    <MudSwitch T="bool" @bind-Value="_vertical" Label="Vertical" Color="Color.Primary" />
+                    <MudSwitch T="bool" @bind-Value="_dropShadow" Label="DropShadow" Color="Color.Primary"
+                        Disabled="@(_variant != Variant.Filled)" />
+                </MudStack>
+
+                <MudText Typo="Typo.caption" Class="mt-6">*DropShadow applies to Filled variant.</MudText>
+            </MudStack>
+        </MudItem>
+
+        <!-- Preview -->
+        <MudItem xs="12" md="8" Class="d-flex align-center justify-center">
+            <MudStack Row="true" Spacing="3">
+                <MudButtonGroup Class="ma-3" Color="@_color" Variant="@_variant" Vertical="@_vertical"
+                    DropShadow="@_dropShadow" Size="Size.Medium">
+                    <MudButton>One</MudButton>
+                    <MudButton>Two</MudButton>
+                    <MudButton>Three</MudButton>
+                </MudButtonGroup>
+
+                <MudButtonGroup Class="ma-3" Color="@_color" Variant="@_variant" Vertical="@_vertical"
+                    DropShadow="@_dropShadow" Size="Size.Medium">
+                    <MudIconButton Icon="@Icons.Material.Filled.AccessAlarm"></MudIconButton>
+                    <MudToggleIconButton Icon="@Icons.Material.Filled.AlarmOff" Color="@Color.Error"
+                        ToggledIcon="@Icons.Material.Filled.AlarmOn" ToggledColor="@Color.Success" />
+                    <MudButton StartIcon="@Icons.Material.Filled.AlarmAdd" IconColor="Color.Warning">Add alarm
+                    </MudButton>
+                </MudButtonGroup>
+            </MudStack>
+        </MudItem>
+
+    </MudGrid>
+</MudPaper>
+
+@code {
+    private bool _vertical = false;
+    private Color _color = Color.Primary;
+    private Variant _variant = Variant.Filled;
+    private bool _dropShadow = true;
+}

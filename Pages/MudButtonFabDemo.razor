@@ -1,0 +1,31 @@
+@page "/components/buttonfab"
+@using MudBlazor
+
+<MudGrid>
+    <!-- Size selector -->
+    <MudItem xs="12" md="3">
+        <MudSelect T="Size" Label="FAB Size" Dense="true" @bind-Value="_fabSize" Class="mb-3">
+            <MudSelectItem Value="Size.Small">Small</MudSelectItem>
+            <MudSelectItem Value="Size.Medium">Medium</MudSelectItem>
+            <MudSelectItem Value="Size.Large">Large</MudSelectItem>
+        </MudSelect>
+    </MudItem>
+
+    <!-- Your FABs (now sized by the selector) -->
+    <MudItem xs="12" md="9">
+        <MudPaper Class="pa-12" Elevation="1" Style="background-color: #F5F5F5;">
+            <MudStack Spacing="4">
+                <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="@_fabSize" />
+                <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="@_fabSize" />
+                <MudFab Color="Color.Tertiary" StartIcon="@Icons.Material.Filled.ShoppingCart" DropShadow="false"
+                    Size="@_fabSize" />
+                <MudFab StartIcon="@Icons.Material.Filled.Bookmark" Label="Bookmark" Size="@_fabSize" />
+                <MudFab StartIcon="@Icons.Material.Filled.Save" Disabled="true" Size="@_fabSize" />
+            </MudStack>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code {
+    private Size _fabSize = Size.Medium;
+}

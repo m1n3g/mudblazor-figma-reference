@@ -1,0 +1,37 @@
+@page "/components/card"
+@using MudBlazor
+
+<MudText Class="mb-2" Typo="Typo.h6" Style="font-weight:700">Card</MudText>
+<MudCard Outlined="@_outlined" Class="mb-2" Style="max-width: 800px;">
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Secondary">I</MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.body1">Istra Croatia</MudText>
+            <MudText Typo="Typo.body2">Peninsula in Europe</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardMedia Image="images/sweden.jpg" Height="250" />
+    <MudCardContent>
+        <MudText>Story of the day</MudText>
+        <MudText Typo="Typo.body2">Old paint found on a stone house door. This photo was taken in a small village in
+            Istra Croatia.</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
+        <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
+    </MudCardActions>
+</MudCard>
+
+<!-- Outlined control -->
+<MudStack Spacing="2" Class="mb-3">
+    <MudSwitch T="bool" @bind-Value="_outlined" Label="Outlined" Color="Color.Primary" />
+</MudStack>
+
+@code {
+    private bool _outlined = false;
+}

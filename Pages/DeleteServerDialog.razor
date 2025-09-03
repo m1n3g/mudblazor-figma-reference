@@ -1,0 +1,30 @@
+@using MudBlazor
+
+<MudDialog>
+    <TitleContent>Delete server?</TitleContent>
+
+    <DialogContent>
+        <MudStack Spacing="1">
+            <MudText><b>Server ID</b><br />@ServerId</MudText>
+            <MudText><b>Server Name</b><br />@ServerName</MudText>
+            <MudText><b>Location</b><br />@Location</MudText>
+            <MudText><b>IP Address</b><br />@IpAddress</MudText>
+        </MudStack>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Error" Variant="Variant.Text" OnClick="Confirm">Delete Server</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] public IMudDialogInstance MudDialog { get; set; } = default!;
+    [Parameter] public Guid ServerId { get; set; }
+    [Parameter] public string ServerName { get; set; } = string.Empty;
+    [Parameter] public string Location { get; set; } = string.Empty;
+    [Parameter] public string IpAddress { get; set; } = string.Empty;
+
+    private void Confirm() => MudDialog.Close(DialogResult.Ok(true));
+    private void Cancel() => MudDialog.Cancel();
+}

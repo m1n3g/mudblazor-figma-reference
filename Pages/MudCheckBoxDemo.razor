@@ -1,0 +1,96 @@
+@page "/components/checkbox"
+@using MudBlazor
+
+<!-- Controls -->
+<MudPaper Class="pa-3 mb-3" Elevation="0">
+    <MudStack Spacing="2">
+
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudSelect T="Color" Label="Color" @bind-Value="_color" Dense="true">
+                    @foreach (Color c in Enum.GetValues(typeof(Color)))
+                    {
+                        <MudSelectItem Value="@c">@c</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudSelect T="Size" Label="Size" @bind-Value="_size" Dense="true">
+                    <MudSelectItem Value="@Size.Small">Small</MudSelectItem>
+                    <MudSelectItem Value="@Size.Medium">Medium</MudSelectItem>
+                    <MudSelectItem Value="@Size.Large">Large</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <MudStack Row Spacing="2" Class="align-center">
+            <MudSwitch Color="Color.Primary" @bind-Value="_dense" Label="Dense" />
+            <MudSwitch Color="Color.Primary" @bind-Value="_readOnly" Label="ReadOnly" />
+        </MudStack>
+
+        <!-- Content (label) placement like the screenshot -->
+        <MudText Typo="Typo.subtitle2">Content (Label) placement</MudText>
+        <MudRadioGroup @bind-Value="_placement">
+            <MudRadio Value="Placement.Top">Top</MudRadio>
+            <MudRadio Value="Placement.Bottom">Bottom</MudRadio>
+            <MudRadio Value="Placement.Start">Start (Left)</MudRadio>
+            <MudRadio Value="Placement.End">End (Right)</MudRadio>
+        </MudRadioGroup>
+
+    </MudStack>
+</MudPaper>
+
+<!-- Preview using selected options -->
+<MudPaper Class="pa-3 mb-3" Elevation="0" Style="background-color: #F5F5F5;">
+    <MudText Typo="Typo.subtitle1" Class="mb-2" Style="font-weight: 600;">Preview</MudText>
+
+    <MudStack Spacing="1">
+
+        <MudCheckBox T="bool" @bind-Value="Label_CheckBox1" Label="Default" Color="_color" Size="_size" Dense="_dense"
+            ReadOnly="_readOnly" LabelPlacement="_placement" />
+
+        <MudCheckBox T="bool" @bind-Value="Label_CheckBox2" Label="Primary" Color="Color.Primary" Size="_size"
+            Dense="_dense" ReadOnly="_readOnly" LabelPlacement="_placement" />
+
+        <MudCheckBox T="bool" @bind-Value="Label_CheckBox3" Label="Secondary (Start/Left)" Color="Color.Secondary"
+            Size="_size" Dense="_dense" ReadOnly="_readOnly" LabelPlacement="Placement.Start" />
+
+        <MudCheckBox T="bool" @bind-Value="Label_CheckBoxDisabled" Disabled="true" Label="Disabled" Size="_size"
+            Dense="_dense" LabelPlacement="Placement.Start" />
+    </MudStack>
+</MudPaper>
+
+<!-- Indeterminate (tri-state) demo -->
+<MudPaper Class="pa-3">
+    <MudText Typo="Typo.subtitle1" Class="mb-2">Indeterminate state</MudText>
+
+    <MudStack Row Spacing="2" Class="align-center">
+        <MudCheckBox T="bool?" @bind-Value="_tri" TriState="true" Color="_color" Size="_size" Dense="_dense"
+            ReadOnly="_readOnly" LabelPlacement="_placement" Label="Tri-state checkbox" />
+
+        <MudText>Value:
+            @(_tri is null ? "null" : _tri!.Value ? "true" : "false")
+        </MudText>
+
+        <MudButton Variant="Variant.Text" OnClick="@(() => _tri = null)">Reset to null</MudButton>
+    </MudStack>
+</MudPaper>
+
+@code {
+    // Bindings for preview checkboxes
+    public bool Label_CheckBox1 { get; set; } = true;
+    public bool Label_CheckBox2 { get; set; } = false;
+    public bool Label_CheckBox3 { get; set; } = false;
+    public bool Label_CheckBoxDisabled { get; set; } = false;
+
+    // Controls
+    private Color _color = Color.Default;
+    private Size _size = Size.Medium;
+    private bool _dense = false;
+    private bool _readOnly = false;
+    private Placement _placement = Placement.End; // Start (Left) by default
+
+    // Tri-state value
+    private bool? _tri = null;
+}

@@ -1,0 +1,31 @@
+@using MudBlazor
+
+<MudDialog>
+    <TitleContent>Lots of content</TitleContent>
+
+    <DialogContent>
+        <!-- limit height & enable vertical scroll -->
+        <MudPaper Elevation="0" Style="max-height:70vh; overflow:auto;">
+            <MudList T="int" Dense="true">
+                @for (var i = 1; i <= 120; i++)
+                {
+                    <MudListItem T="int" Value="@i">
+                        Line @i — Lorem ipsum dolor sit amet…
+                    </MudListItem>
+                }
+            </MudList>
+        </MudPaper>
+    </DialogContent>
+
+    <DialogActions>
+        <MudButton OnClick="Cancel">Close</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">OK</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] public IMudDialogInstance MudDialog { get; set; } = default!;
+
+    private void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    private void Cancel() => MudDialog.Cancel();
+}

@@ -1,0 +1,101 @@
+@page "/components/drawer"
+@using MudBlazor
+
+<MudText Typo="Typo.h6" Class="mb-2" Style="font-weight:700">Temporary Drawer</MudText>
+<MudStack Row="true">
+    <MudButton Variant="Variant.Text" OnClick="@(() => OpenDrawer(Anchor.Start))">Start</MudButton>
+    <MudButton Variant="Variant.Text" OnClick="@(() => OpenDrawer(Anchor.End))">End</MudButton>
+    <MudButton Variant="Variant.Text" OnClick="@(() => OpenDrawer(Anchor.Top))">Top</MudButton>
+    <MudButton Variant="Variant.Text" OnClick="@(() => OpenDrawer(Anchor.Bottom))">Bottom</MudButton>
+    <MudSwitch @bind-Value="_overlayAutoClose" Label="Overlay Autoclose" Color="Color.Secondary" />
+</MudStack>
+
+<MudDrawer @bind-Open="@_open" Anchor="@_anchor" Elevation="1" Variant="@DrawerVariant.Temporary"
+    OverlayAutoClose="@_overlayAutoClose">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6">My App</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu>
+        <MudNavLink Match="NavLinkMatch.All">Store</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All">Library</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All">Community</MudNavLink>
+        <MudNavLink OnClick="_ => _open = false">Close Drawer</MudNavLink>
+    </MudNavMenu>
+</MudDrawer>
+
+<MudText Typo="Typo.h6" Class="mt-10 mb-4" Style="font-weight:700">Mini Variant</MudText>
+
+<!-- Mini variant customization block -->
+<MudPaper Height="320px" Style="overflow:hidden; position:relative;">
+    <MudDrawerContainer Class="mud-height-full">
+
+        <!-- Mini drawer -->
+        <MudDrawer @bind-Open="_openMini" Variant="DrawerVariant.Mini" Elevation="1" Fixed="false"
+            OpenMiniOnHover="true" ClipMode="_clipMode" Breakpoint="_breakpoint">
+
+            <MudNavMenu>
+                <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Store">Store</MudNavLink>
+                <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.LibraryBooks">Library</MudNavLink>
+                <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Group">Community</MudNavLink>
+            </MudNavMenu>
+        </MudDrawer>
+
+        <!-- Content + AppBar + controls -->
+        <MudMainContent>
+            <MudAppBar Dense="_denseAppBar" Color="Color.Primary">
+                <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
+                    OnClick="ToggleMini" />
+                <MudSpacer />
+                <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" />
+            </MudAppBar>
+
+            <MudContainer Class="pa-4">
+                <MudStack Spacing="2" Style="max-width:520px;">
+                    <MudSelect T="DrawerClipMode" Label="Select clip mode" @bind-Value="_clipMode" Dense="true">
+                        <MudSelectItem Value="@DrawerClipMode.Never">
+                            Not clipped (DrawerClipMode.Never)
+                        </MudSelectItem>
+                        <MudSelectItem Value="@DrawerClipMode.Docked">
+                            Clip when open (DrawerClipMode.Docked)
+                        </MudSelectItem>
+                        <MudSelectItem Value="@DrawerClipMode.Always">
+                            Always clipped (DrawerClipMode.Always)
+                        </MudSelectItem>
+                    </MudSelect>
+
+
+                    <MudSelect T="Breakpoint" Label="Select breakpoint" @bind-Value="_breakpoint" Dense="true">
+                        @foreach (Breakpoint bp in Enum.GetValues(typeof(Breakpoint)))
+                        {
+                            <MudSelectItem Value="@bp">@bp</MudSelectItem>
+                        }
+                    </MudSelect>
+
+                    <MudSwitch @bind-Value="_denseAppBar" Label="Dense appbar" />
+                </MudStack>
+            </MudContainer>
+        </MudMainContent>
+
+    </MudDrawerContainer>
+</MudPaper>
+
+@code {
+    // Temporary drawer state
+    private bool _open;
+    private Anchor _anchor;
+    private bool _overlayAutoClose = true;
+
+    private void OpenDrawer(Anchor anchor)
+    {
+        _open = true;
+        _anchor = anchor;
+    }
+
+    // Mini drawer state + options
+    private bool _openMini = false;
+    private DrawerClipMode _clipMode = DrawerClipMode.Always;
+    private Breakpoint _breakpoint = Breakpoint.Lg;
+    private bool _denseAppBar = false;
+
+    private void ToggleMini() => _openMini = !_openMini;
+}
