@@ -1,14 +1,27 @@
 ﻿@inherits LayoutComponentBase
+@using MudBlazor
+
+<!-- Single theme host for the app -->
+<MudThemeProvider @ref="_themeProvider" IsDarkMode="_isDark" />
+<!-- Theme="_theme" -->
 
 <MudLayout>
+
     <!-- Top AppBar -->
     <MudAppBar Elevation="1" Color="Color.Primary" Fixed="true">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start"
             OnClick="ToggleDrawer" />
+
         <MudText Typo="Typo.h6" Class="ml-2">MudPlayground</MudText>
         <MudSpacer />
+
         <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Href="https://github.com/m1n3g/mudblazor-figma-reference"
             Color="Color.Inherit" Target="_blank" Rel="noopener noreferrer" />
+
+        <!-- Light / Dark toggle -->
+        <MudIconButton Color="Color.Inherit"
+            Icon="@(_isDark ? Icons.Material.Filled.LightMode : Icons.Material.Filled.DarkMode)"
+            AriaLabel="Toggle theme" OnClick="ToggleTheme" />
     </MudAppBar>
 
     <!-- Sidebar Drawer -->
@@ -16,7 +29,7 @@
         MiniVariantWidth="72px" Anchor="Anchor.Start" Breakpoint="Breakpoint.Md">
         <MudDrawerHeader>
             <MudText Typo="Typo.subtitle1">Navigation</MudText>
-        </MudDrawerHeader> <!-- Call the NavMenu component -->
+        </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
 
@@ -24,8 +37,43 @@
     <MudMainContent Class="pt-20 px-7">
         @Body
     </MudMainContent>
+
 </MudLayout>
 
 @code {
-    private bool _drawerOpen = true; void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+    private bool _drawerOpen = true;
+    private void ToggleDrawer() => _drawerOpen = !_drawerOpen;
+
+    // Theme state
+    private MudThemeProvider? _themeProvider;
+    private bool _isDark;
+
+    <!-- (Optional) customize palettes
+        private readonly MudTheme _theme = new()
+        {
+            PaletteLight = new PaletteLight
+            {
+                Primary = Colors.Indigo.Default,
+                Secondary = Colors.Pink.Accent2
+            },
+            PaletteDark = new PaletteDark
+            {
+                Primary = Colors.Indigo.Lighten2,
+                Secondary = Colors.Pink.Accent2,
+                Surface   = "#1E1E2D",
+                Background= "#121212"
+            }
+        };-->
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender && _themeProvider is not null)
+        {
+            // New v8 API: detect OS preference
+            _isDark = await _themeProvider.GetSystemDarkModeAsync();
+            StateHasChanged();
+        }
+    }
+
+    private void ToggleTheme() => _isDark = !_isDark; // MudThemeProvider reacts to this
 }
