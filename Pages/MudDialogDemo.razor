@@ -4,7 +4,8 @@
 
 <MudStack Spacing="2">
 
-    <MudText Typo="Typo.h6">Dialog demos</MudText>
+    <MudText Typo="Typo.h6" Style="font-weight: 600;">Dialog demos</MudText>
+    <MudAlert Severity="Severity.Info">Default minimum width: 152px; maximum width: 600px.</MudAlert>
 
     <!-- Launchers -->
     <MudPaper Class="pa-3">
@@ -69,8 +70,8 @@
     private readonly List<ServerRow> _servers =
     [
     new(Guid.NewGuid(), "Server1", "USA", "10.0.0.1"),
-new(Guid.NewGuid(), "Server2", "Sweden", "127.0.0.1"),
-new(Guid.NewGuid(), "Server3", "Japan", "172.16.1.5")
+    new(Guid.NewGuid(), "Server2", "Sweden", "127.0.0.1"),
+    new(Guid.NewGuid(), "Server3", "Japan", "172.16.1.5")
     ];
 
     // ---- Launchers ----

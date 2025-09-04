@@ -6,6 +6,7 @@
     <MudCheckBox @bind-Value="_dense" Label="Dense" />
     <MudCheckBox @bind-Value="_gutters" Label="Gutters" />
     <MudCheckBox @bind-Value="_outlined" Label="Outlined" />
+    <MudCheckBox @bind-Value="_square" Label="Square" />
     <MudCheckBox @bind-Value="_hideIcon" Label="Hide Icon" />
     <div class="ml-4" style="min-width:240px;">
         <MudSlider @bind-Value="_elevation" Min="0" Max="25" Step="1" Color="Color.Info">Elevation: @_elevation
@@ -15,7 +16,7 @@
 
 <!-- Panels -->
 <MudExpansionPanels Class="mt-5" MultiExpansion="_multi" Dense="_dense" Outlined="_outlined" Elevation="_elevation"
-    DisableGutters="@(!_gutters)"> @* If your MudBlazor version exposes Gutters instead, use Gutters="_gutters" *@
+    Square="_square" DisableGutters="@(!_gutters)"> @* If your MudBlazor version exposes Gutters instead, use Gutters="_gutters" *@
 
     <MudExpansionPanel Text="Jedi Council" HideIcon="_hideIcon">
         <TitleContent>
@@ -72,5 +73,6 @@
     private bool _gutters = true;
     private bool _outlined = false;
     private bool _hideIcon = false;
+    private bool _square = false;
     private int _elevation = 1;
 }

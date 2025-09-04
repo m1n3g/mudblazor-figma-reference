@@ -1,16 +1,18 @@
 @page "/components/divider"
 
 <MudText Typo="Typo.h6" Class="mb-2" Style="font-weight:700">Inset Dividers</MudText>
+<MudSwitch Class="mb-4" @bind-Value="_lightDivider" Color="Color.Primary" Label="Use Light Divider" />
+
 <MudPaper Width="300px" Square="true">
     <MudList T="string">
         <MudListItem Icon="@Icons.Material.Filled.TrendingUp">
             Trending
         </MudListItem>
-        <MudDivider DividerType="DividerType.Inset" />
+        <MudDivider DividerType="DividerType.Inset" Light="@_lightDivider"/>
         <MudListItem Icon="@Icons.Material.Filled.StarRate">
             Most Stars
         </MudListItem>
-        <MudDivider DividerType="DividerType.Inset" />
+        <MudDivider DividerType="DividerType.Inset" Light="@_lightDivider"/>
         <MudListItem Icon="@Icons.Material.Filled.History">
             History
         </MudListItem>
@@ -26,7 +28,7 @@
     </MudCardHeader>
     <MudCardContent>
         <MudText>This is the type of uranium used in the RBMK reactors.</MudText>
-        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+        <MudDivider DividerType="DividerType.Middle" Class="my-6" Light="@_lightDivider"/>
         <MudText GutterBottom="true">Select Reactor Type</MudText>
         <MudChip T="string" Color="Color.Secondary">RBMK-1000</MudChip>
         <MudChip T="string">RBMK-1500</MudChip>
@@ -43,9 +45,13 @@
     <MudIconButton Icon="@Icons.Material.Filled.FormatAlignCenter" Color="Color.Dark" Class="rounded-0" />
     <MudIconButton Icon="@Icons.Material.Filled.FormatAlignLeft" Color="Color.Dark" Class="rounded-0" />
 
-    <MudDivider Vertical="true" FlexItem="true" />
+    <MudDivider Vertical="true" FlexItem="true" Light="@_lightDivider"/>
 
     <MudIconButton Icon="@Icons.Material.Filled.FormatBold" Color="Color.Dark" Class="rounded-0" />
     <MudIconButton Icon="@Icons.Material.Filled.FormatItalic" Color="Color.Dark" Class="rounded-0" />
     <MudIconButton Icon="@Icons.Material.Filled.FormatUnderlined" Color="Color.Dark" Class="rounded-0" />
 </MudPaper>
+
+@code {
+    private bool _lightDivider = false;
+}
