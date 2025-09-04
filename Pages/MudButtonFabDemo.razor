@@ -1,5 +1,4 @@
 @page "/components/buttonfab"
-@using MudBlazor
 
 <MudGrid>
     <!-- Size selector -->
@@ -13,7 +12,7 @@
 
     <!-- Your FABs (now sized by the selector) -->
     <MudItem xs="12" md="9">
-        <MudPaper Class="pa-12" Elevation="1" Style="background-color: #F5F5F5;">
+        <MudPaper Class="pa-12" Elevation="1">
             <MudStack Spacing="4">
                 <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Size="@_fabSize" />
                 <MudFab Color="Color.Secondary" StartIcon="@Icons.Material.Filled.Edit" Size="@_fabSize" />

@@ -1,8 +1,7 @@
 @page "/components/appbar"
-@using MudBlazor
 
 <MudText Typo="Typo.h6" Style="font-weight:700">Basic App Bar</MudText>
-<MudPaper Class="pa-6 my-3" Elevation="0" Style="background-color: #F5F5F5;">
+<MudPaper Class="pa-6 my-3" Elevation="0">
     <MudStack Spacing="3" AlignItems="AlignItems.Start">
         <MudAppBar Color="Color.Primary" Fixed="false" Dense="@dense" Elevation="@elevation">
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
@@ -35,7 +34,7 @@
 
 
 <MudText Class="mt-8" Typo="Typo.h6" Style="font-weight:700">Contextual App Bar</MudText>
-<MudPaper Class="pa-6 my-3" Elevation="0" Style="background-color: #F5F5F5;">
+<MudPaper Class="pa-6 my-3" Elevation="0">
     <MudLayout>
         <MudAppBar Color="Color.Primary" Fixed="false" Contextual>
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" />
