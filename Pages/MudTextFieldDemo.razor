@@ -1,0 +1,75 @@
+@page "/components/textfield"
+
+<MudGrid Gutter="Size.Medium">
+
+    <!-- === BASIC TEXT === -->
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6">Basic Text</MudText>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG"/>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Standard" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG"/>
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6">Dense Text</MudText>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG"/>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Standard" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG"/>
+    </MudItem>
+
+    <!-- === ADORNMENTS === -->
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6" Class="mt-6">Adornments</MudText>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Adornment Start" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney"/>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Adornment End" ShrinkLabel Clearable="true" Immediate="true" @bind-Value="TextValue" HelperText="Some helping Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Standard" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Placeholder="Test Placeholder" />
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6" Class="mt-6">Dense Adornments</MudText>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Adornment Start" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney"/>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Adornment End" Clearable="true" Immediate="true" @bind-Value="TextValue" HelperText="Some helping Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Standard" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Placeholder="Test Placeholder" />
+    </MudItem>
+
+    <!-- === COUNTER === -->
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6" Class="mt-6">Counter</MudText>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Limited Text" Immediate="true" T="string" Counter="25" MaxLength="25" HelperText="This field uses Counter and MaxLength prop" />
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Counter Text" Immediate="true" T="string" Counter="0" HelperText="This field has Counter set to 0" />
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Error" Clearable="true" Immediate="true" @bind-Value="TextValue1" Counter="5" MaxLength="5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6" Class="mt-6">Dense Counter</MudText>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Limited Text" Immediate="true" T="string" Counter="25" MaxLength="25" HelperText="This field uses Counter and MaxLength prop" />
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Counter Text" Immediate="true" T="string" Counter="0" HelperText="This field has Counter set to 0" />
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Error" Clearable="true" Immediate="true" @bind-Value="TextValue1" Counter="5" MaxLength="5" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+    </MudItem>
+
+    <!-- === DISABLED === -->
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6" Class="mt-6">Disabled</MudText>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Default" Disabled="true" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG"/>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Disabled Shrink" Disabled="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG" ShrinkLabel />
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Disabled Adornment Start" Disabled="true" @bind-Value="TextValue" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney"/>
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Disabled Adornment End" Disabled="true" @bind-Value="TextValue" HelperText="Some helping Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Disabled Standard" Disabled="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Placeholder="Test Placeholder" />
+        <MudTextField Class="mt-2" Variant="Variant.Outlined" Label="Disabled Limited Text" Disabled="true" Immediate="true" T="string" Counter="25" MaxLength="25" HelperText="This field uses Counter and MaxLength prop" />
+    </MudItem>
+    <MudItem xs="12" md="6">
+        <MudText Typo="Typo.h6" Class="mt-6">Dense Disabled</MudText>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Default" Disabled="true" Clearable="true" Immediate="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG"/>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Disabled Shrink" Disabled="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentText="KG" ShrinkLabel />
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Disabled Adornment Start" Disabled="true" @bind-Value="TextValue" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.AttachMoney"/>
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Disabled Adornment End" Disabled="true" @bind-Value="TextValue" HelperText="Some helping Text" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" />
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Disabled Standard" Disabled="true" @bind-Value="TextValue" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.AttachMoney" Placeholder="Test Placeholder" />
+        <MudTextField Class="mt-2" Margin="Margin.Dense" Variant="Variant.Outlined" Label="Dense Disabled Limited Text" Disabled="true" Immediate="true" T="string" Counter="25" MaxLength="25" HelperText="This field uses Counter and MaxLength prop" />
+    </MudItem>
+
+</MudGrid>
+
+@code {
+    public string ? TextValue { get; set; }
+    int TextValue1;
+    private IEnumerable<string> MaxCharacters(string ch)
+    {
+        if (!string.IsNullOrEmpty(ch) && 5 < ch?.Length)
+            yield return "Max 25 characters";
+    }
+}

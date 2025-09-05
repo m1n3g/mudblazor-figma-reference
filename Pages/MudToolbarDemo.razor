@@ -1,8 +1,9 @@
 @page "/components/toolbar"
+@using MudBlazor
 
 <!-- Text field for width -->
-<MudTextField Class="mb-4" @bind-Value="_toolbarWidth" Label="Toolbar width" Placeholder="e.g. 800px or 100%" Immediate="true"
-    Variant="Variant.Outlined" Style="width: 400px" />
+<MudTextField Class="mb-4" @bind-Value="_toolbarWidth" Label="Toolbar width" Placeholder="e.g. 800px or 100%"
+    Immediate="true" Variant="Variant.Outlined" Style="width: 400px" />
 <MudStack Class="mb-4" Row="true" Spacing="3">
     <MudSwitch Class="mb-4" @bind-Value="_wrapcontent" Color="Color.Primary" Label="Wrap Content" />
     <MudSwitch Class="mb-4" @bind-Value="_dense" Color="Color.Primary" Label="Dense" />
@@ -16,16 +17,6 @@
         <MudIconButton Icon="@Icons.Material.Outlined.Edit" />
         <MudIconButton Icon="@Icons.Material.Outlined.Remove" />
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
-        <MudIconButton Icon="@Icons.Material.Outlined.PeopleAlt" />
-        <MudIconButton Icon="@Icons.Material.Outlined.MoreVert" Color="Color.Inherit" />
-    </MudToolBar>
-
-    <MudToolBar Class="mt-3" WrapContent="_wrapcontent" Dense="_dense" Gutters="_gutters" Style="@GetToolbarStyle()">
-        <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" />
-        <MudIconButton Icon="@Icons.Material.Outlined.Add" />
-        <MudIconButton Icon="@Icons.Material.Outlined.Edit" />
-        <MudIconButton Icon="@Icons.Material.Outlined.Remove" />
         <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
         <MudIconButton Icon="@Icons.Material.Outlined.PeopleAlt" />
         <MudIconButton Icon="@Icons.Material.Outlined.MoreVert" Color="Color.Inherit" />

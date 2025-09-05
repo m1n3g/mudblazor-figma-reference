@@ -1,1 +1,38 @@
 @page "/components/slider"
+
+<MudText Class="my-4" Typo="Typo.h6">Basic Sliders</MudText>
+<MudSlider Color="Color.Primary" Size="Size.Small" Value="@value1">Small</MudSlider>
+<MudSlider Color="Color.Primary" Size="Size.Medium" Value="@value1">Medium</MudSlider>
+<MudSlider Color=" Color.Primary" Size="Size.Large" Value="@value1">Large</MudSlider>
+<MudSlider Color="Color.Primary" Disabled="true" Value="@(20)">Disabled Slider</MudSlider>
+
+<MudText Class="my-4" Typo="Typo.h6">Variant</MudText>
+<MudSlider Color="Color.Primary" Value="50.0" Variant="Variant.Text">Text Default Variant</MudSlider>
+<MudSlider Color="Color.Primary" Value="50.0" Variant="Variant.Filled">Filled Variant</MudSlider>
+<MudSlider Color="Color.Primary" Disabled="true" Value="50.0" Variant="Variant.Filled">Filled Disabled</MudSlider>
+
+<MudText Class="my-4" Typo="Typo.h6">Step Sliders</MudText>
+<MudSlider Step="10" Value="70" Color="Color.Success" />
+<MudSlider Step="25" Value="50" Color="Color.Warning" />
+
+<MudText Class="my-4" Typo="Typo.h6">Min and Max Values</MudText>
+<MudSlider Value="50" Min="20" Max="80" Color="Color.Info">Value: @value1.ToString()</MudSlider>
+<MudSlider @bind-Value="value2" Min="0" Max="10" Step="1" Color="Color.Error">Value: @value2.ToString("F2")</MudSlider>
+
+<MudText Class="my-4" Typo="Typo.h6">Tick Marks</MudText>
+<MudSlider TickMarks="true" Step="10" Value="10" />
+<MudSlider Variant="Variant.Filled" TickMarks="true" Step="10" Value="10" />
+<MudSlider Disabled="true" TickMarks="true" Step="10" Value="10" />
+<MudSlider Disabled="true" Variant="Variant.Filled" TickMarks="true" Step="10" Value="10" />
+
+
+<MudText Class="my-4" Typo="Typo.h6">Labels</MudText>
+<MudSlider TickMarks="true" Color="Color.Dark" TickMarkLabels="@labels" Step="25" Value="50" />
+
+
+@code {
+    public double value1 = 50;
+    public double value2 = -0.75;
+    public double value3 = 0;
+    string[] labels = new string[] { "Korv", "Fisk", "Äpple", "Groda", "Köttbullar"};
+}

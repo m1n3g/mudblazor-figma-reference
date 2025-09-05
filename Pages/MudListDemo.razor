@@ -1,0 +1,120 @@
+@page "/components/list"
+
+<style>
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
+
+<MudGrid>
+    <MudItem xs="12" md="6">
+        <MudPaper Width="300px">
+            <MudList T="string" ReadOnly="@ReadOnly" Dense="@Dense" Gutters="@Gutters" Disabled="@Disabled" Padding="@Padding">
+                <MudListSubheader Class="truncate" Gutters="@Gutters">
+                    EmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmailEmail
+                </MudListSubheader>
+
+                <MudListItem Text="Inbox" Expanded>
+                    <NestedList>
+                        <MudListItem Class="truncate" Icon="@(Icon ? Icons.Material.Filled.StarRate: null)">
+                            <div class="truncate"> Starredddddddddddddddddddddddddddddddddddddd</div>
+                        </MudListItem>
+                        <MudListItem Icon="@(Icon ? Icons.Material.Filled.WatchLater: null)">
+                                <AvatarContent>
+                                    <MudAvatar>
+                                        <MudImage Src="images/mony.jpg" />
+                                    </MudAvatar>
+                                </AvatarContent>
+                        </MudListItem>
+
+                        <MudListItem Class="truncate" Icon="@(Icon ? Icons.Material.Filled.StarRate: null)">
+                            <NestedList>
+                                <MudListItem Class="truncate" Icon="@(Icon ? Icons.Material.Filled.StarRate: null)">
+                                    <div class="truncate"> Starredddddddddddddddddddddddddddddddddddddd</div>
+                                </MudListItem>
+                            </NestedList>
+                        </MudListItem>
+                    </NestedList>
+                </MudListItem>
+
+                <MudListItem Icon="@(Icon ? Icons.Material.Filled.Send: null)" Class="truncate" Text="Sent mailllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll" @bind-Expanded="_expanded">
+                    <NestedList>
+                        <MudListItem>Re: Meeting tomorrow</MudListItem>
+                        <MudListItem>Fwd: JavaScript memes xD</MudListItem>
+                    </NestedList>
+                </MudListItem>
+                <MudListItem Icon="@(Icon ? Icons.Material.Filled.Drafts: null)">
+                    Drafts
+                </MudListItem>
+                <MudDivider/>
+                <MudListItem Icon="@(Icon ? Icons.Material.Filled.WatchLater: null)">
+                    <AvatarContent>
+                        @if (ShowAvatar)
+                            {
+                                <MudAvatar>
+                                    <MudImage Src="images/mony.jpg" />
+                                </MudAvatar>
+                            }
+                    </AvatarContent>
+                    <ChildContent>
+                        Photos
+                    </ChildContent>
+                </MudListItem>
+                <MudListSubheader Class="mb-n3">
+                    <MudSwitch Color="Color.Primary" @bind-Value="_expanded">"Sent mail" Expansion</MudSwitch>
+                </MudListSubheader>
+                <MudListItem Text="Trash" SecondaryText="Removed e-mails" />
+                <MudListItem Text="Spam" SecondaryText="E-mails from common providers" />
+            </MudList>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="12" md="6">
+        <MudPaper Class="mt-4" Width="300px">
+            <MudList T="string" @bind-SelectedValues="SelectedValues" SelectionMode="SelectionMode.MultiSelection" ReadOnly="@ReadOnly" CheckBoxColor="Color.Primary" Gutters="@Gutters" Dense="@Dense">
+                <MudListSubheader>
+                    Select your favourite drinks:
+                </MudListSubheader>
+                <MudListItem Text="Milk" />
+                <MudListItem Disabled="true" Text="Sparkling Water" Value='"Carbonated H²O"' />
+                <MudListItem Text="Teas" Expanded>
+                    <NestedList>
+                        <MudListItem Text="English Tea" Value='"Earl Grey"' />
+                        <MudListItem Text="Chinese Tea" Value='"Gunpowder Tea"' />
+                        <MudListItem Text="Bubble Tea" />
+                    </NestedList>
+                </MudListItem>
+            </MudList>
+        </MudPaper>
+    </MudItem>
+
+    <MudItem xs="12" md="12" Class="d-flex">
+        <MudCheckBox @bind-Value="Icon" Label="Icon" />
+        <MudCheckBox @bind-Value="IconColor" Label="IconColor" />
+        <MudCheckBox @bind-Value="ReadOnly" Label="ReadOnly" />
+        <MudCheckBox @bind-Value="Disabled" Label="Disabled" />
+        <MudCheckBox @bind-Value="Dense" Label="Dense" />
+        <MudCheckBox @bind-Value="Gutters" Label="Gutters" />
+        <MudCheckBox @bind-Value="Padding" Label="Padding" />
+    </MudItem>
+</MudGrid>
+
+@code {
+    public bool Dense { get; set; }
+    public bool ReadOnly { get; set; }
+    public bool Gutters { get; set; } = true;
+    public bool Padding { get; set; } = true;
+    public bool Disabled { get; set; }
+    public bool Icon { get; set; } = true;
+    public bool IconColor { get; set; } = true;
+    public bool ShowAvatar { get; set; } = true;
+
+    public Color StableColor => IconColor ? Color.Primary : default;
+    public Color RadioactiveColor => IconColor ? Color.Tertiary : default;
+
+    public IReadOnlyCollection<string> SelectedValues = ["Milk", "Cafe Latte"];
+
+    public bool _expanded;
+}
