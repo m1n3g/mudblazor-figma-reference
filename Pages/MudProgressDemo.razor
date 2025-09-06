@@ -1,0 +1,210 @@
+@page "/components/progress"
+@using MudBlazor
+
+@using System;
+@using System.Threading;
+@implements IDisposable
+
+<MudText Class="mb-2" Typo="Typo.h6">Circular Progress</MudText>
+
+<MudText Class="mb-4" Typo="Typo.body1">Indeterminate Default</MudText>
+<MudStack Row="true">
+    <MudProgressCircular Color="Color.Info" Indeterminate="true" />
+</MudStack>
+
+<MudText Class="my-4" Typo="Typo.body1">Indeterminate Size</MudText>
+<MudStack Row="true">
+    <MudProgressCircular Color="Color.Default" Size="Size.Small" Indeterminate="true" />
+    <MudProgressCircular Color="Color.Primary" Size="Size.Medium" Indeterminate="true" />
+    <MudProgressCircular Color="Color.Secondary" Size="Size.Large" Indeterminate="true" />
+    <MudProgressCircular Color="Color.Success" Style="height:70px;width:70px;" Indeterminate="true" />
+</MudStack>
+
+<MudText Class="my-4" Typo="Typo.body1">Indeterminate Rounded</MudText>
+<MudStack Row="true">
+    <MudProgressCircular Color="Color.Warning" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="25" />
+    <MudProgressCircular Color="Color.Warning" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="50" />
+    <MudProgressCircular Color="Color.Warning" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="75" />
+    <MudProgressCircular Color="Color.Warning" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="100" />
+</MudStack>
+
+<MudText Class="my-4" Typo="Typo.body1">Determinate</MudText>
+<MudStack Row="true">
+    <MudProgressCircular Color="Color.Default" Value="@_Value" />
+    <MudProgressCircular Color="Color.Primary" Value="@_Value" />
+    <MudProgressCircular Color="Color.Secondary" Value="@_Value" />
+    <MudProgressCircular Color="Color.Success" Value="@_Value" />
+    <MudProgressCircular Color="Color.Info" Value="@_Value" />
+</MudStack>
+
+<MudText Class="my-4" Typo="Typo.body1">Custom Content</MudText>
+<MudStack Row="true">
+    <MudProgressCircular Color="Color.Default" Value="@_Value">
+        <ChildContent>
+            @_Value
+        </ChildContent>
+    </MudProgressCircular>
+    <MudProgressCircular Color="Color.Primary" Value="@_Value" Size="Size.Large">
+        <ChildContent>
+            @_Value %
+        </ChildContent>
+    </MudProgressCircular>
+    <MudProgressCircular Style="height: 80px; width: 80px" Color="Color.Primary" Value="@_Value">
+        <ChildContent>
+            <MudStack Spacing="0" AlignItems="AlignItems.Center" Justify="Justify.Center">
+                <MudText Typo="Typo.subtitle2">Value</MudText>
+                <MudText Typo="Typo.subtitle2">@_Value</MudText>
+            </MudStack>
+        </ChildContent>
+    </MudProgressCircular>
+    <MudProgressCircular Style="height: 60px; width: 60px" Color="Color.Success" Value="@_doubleValue">
+        <ChildContent>@_doubleValue.ToString("N2")</ChildContent>
+    </MudProgressCircular>
+    <MudProgressCircular Size="Size.Large" Indeterminate="true" Color="Color.Primary">
+        <ChildContent>Mud</ChildContent>
+    </MudProgressCircular>
+</MudStack>
+
+<MudDivider Class="my-4" />
+
+<MudText Class="mb-2" Typo="Typo.h6">Linear Progress</MudText>
+<MudText Class="mb-4" Typo="Typo.body1">Indeterminate Default</MudText>
+<MudStack>
+    <MudProgressLinear Size="Size.Small" Color="Color.Default" Indeterminate="true" Rounded="true" Class="my-7">
+        <MudText Typo="Typo.caption">
+            <b>25%</b>
+        </MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Medium" Color="Color.Primary" Indeterminate="true" Rounded="true" Class="my-7">
+        <MudText Typo="Typo.body2">
+            <b>25%</b>
+        </MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Secondary" Indeterminate="true" Rounded="true"
+        Class="my-7">
+        <MudText Typo="Typo.body1">
+            <b>25%</b>
+        </MudText>
+    </MudProgressLinear>
+
+</MudStack>
+
+<MudText Class="my-4" Typo="Typo.body1">Determinate Default</MudText>
+<MudStack>
+    <MudProgressLinear Size="Size.Small" Striped="true" Color="Color.Default" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.caption">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Style="height: 60px;" Striped="true" Color="Color.Primary" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body2">
+            <b>25%</b>
+        </MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Secondary" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body1">
+            <b>Text Long</b>
+        </MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Tertiary" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body1">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Info" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body1">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Success" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body1">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Warning" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body1">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Style="height: 60px;" Striped="true" Color="Color.Error" Value="@_Value" Class="my-7">
+        <MudText Typo="Typo.body1">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Style="height: 60px;" Rounded="true" Striped="true" Color="Color.Dark" Value="@_Value"
+        Class="my-7">
+        <MudText Typo="Typo.body1">100%</MudText>
+    </MudProgressLinear>
+</MudStack>
+
+<MudText Class="my-4" Typo="Typo.body1">Buffer</MudText>
+<MudStack>
+    <MudProgressLinear Size="Size.Small" Striped="true" Color="Color.Default" Buffer="true" Value="@_Value"
+        BufferValue="@BufferValue" Class="my-7">
+        <MudText Typo="Typo.caption">100%</MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Medium" Striped="true" Color="Color.Primary" Buffer="true" Value="@_Value"
+        BufferValue="@BufferValue" Class="my-7">
+        <MudText Typo="Typo.body2">
+            <b>25%</b>
+        </MudText>
+    </MudProgressLinear>
+
+    <MudProgressLinear Size="Size.Large" Striped="true" Color="Color.Secondary" Buffer="true" Value="@_Value"
+        BufferValue="@BufferValue" Class="my-7">
+        <MudText Typo="Typo.body1">
+            <b>Text Long</b>
+        </MudText>
+    </MudProgressLinear>
+</MudStack>
+
+
+<MudText Class="my-4" Typo="Typo.body1">Vertical</MudText>
+<MudStack>
+    <MudPaper Height="360px" Class="d-flex justify-space-around mud-width-full" Elevation="0">
+        <MudProgressLinear Vertical="true" Color="Color.Primary" Size="Size.Small" Indeterminate="true" />
+        <MudProgressLinear Vertical="true" Color="Color.Primary" Size="Size.Medium" Value="@_Value" />
+        <MudProgressLinear Vertical="true" Color="Color.Primary" Size="Size.Medium" Value="25">
+            <MudText Typo="Typo.subtitle1" Color="Color.Dark"><b>25</b></MudText>
+        </MudProgressLinear>
+        <MudProgressLinear Vertical="true" Color="Color.Primary" Size="Size.Small" Buffer="true" Value="@_Value"
+            BufferValue="@BufferValue" />
+        <MudProgressLinear Vertical="true" Color="Color.Primary" Striped="true" Size="Size.Large" Value="@_Value" />
+    </MudPaper>
+</MudStack>
+
+@code {
+    private bool _disposed;
+    public int _Value { get; set; }
+    private double _doubleValue;
+    public int BufferValue { get; set; }
+    public async Task SimulateProgressAsync()
+    {
+        _Value = 0;
+        _doubleValue = 0;
+        BufferValue = 10;
+        do
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            _Value += 4;
+            _doubleValue += 4.2d;
+            BufferValue += 5;
+            StateHasChanged();
+            await Task.Delay(500);
+
+        } while (_Value < 100);
+
+        await SimulateProgressAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await SimulateProgressAsync();
+    }
+
+    public void Dispose() => _disposed = true;
+}

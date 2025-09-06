@@ -1,4 +1,5 @@
 @page "/components/chips"
+@using MudBlazor
 
 <!-- Controls Row: Variant & Size -->
 <MudGrid Class="mb-2">
@@ -98,7 +99,7 @@
 <MudStack Row Spacing="1" Class="align-center">
     @foreach (var chip in _chips)
     {
-        <MudChip T="string" Value="@chip" Variant="_variant" Size="_size" Label="_label" Color="Color.Dark"
+        <MudChip T="string" Value="@chip" Variant="_variant" Size="_size" Label="_label" Color="Color.Primary"
             Closeable="_closable" OnClose="@(() => RemoveFromList(chip))">
             @chip
         </MudChip>
