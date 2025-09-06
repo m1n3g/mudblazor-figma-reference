@@ -1,0 +1,2 @@
+# Treat Razor pages as C# for GitHub’s language bar & language filters
+*.razor  linguist-language=C#
