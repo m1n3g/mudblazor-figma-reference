@@ -12,6 +12,32 @@
             <MudDateRangePicker
                 @ref="_picker"
                 @bind-DateRange="_rangeExtra"
+                Variant="Variant.Text"
+                Label="Editable Range with Action Buttons"
+                Margin="@ComputedMargin"
+                PickerIcon="@Icons.Material.Filled.DateRange"
+                Disabled="@_disabled"
+                ReadOnly="@(_readonly || !_editable)"
+                Clearable="@_clearable"
+                AutoClose="@_autoClose"
+                ShrinkLabel="@_shrinkLabel"
+                PlaceholderStart="@(_placeholder ? "Start date" : null)"
+                PlaceholderEnd="@(_placeholder ? "End date" : null)"
+                HelperText="@(_helperText ? "Helper Text" : null)"
+                HelperTextOnFocus="@_helperTextOnFocus"
+                Error="@_hasError"
+                ErrorText="Please select a range">
+                <PickerActions>
+                    <MudButton Class="mr-auto align-self-start" OnClick="@(() => _picker.ClearAsync())">Clear</MudButton>
+                    <MudButton OnClick="@(() => _picker.CloseAsync(false))">Cancel</MudButton>
+                    <MudButton Color="Color.Primary" OnClick="@(() => _picker.CloseAsync())">OK</MudButton>
+                </PickerActions>
+            </MudDateRangePicker>
+
+            <!-- Editable + actions (also respects global toggles) -->
+            <MudDateRangePicker
+                @ref="_picker"
+                @bind-DateRange="_rangeExtra"
                 Variant="Variant.Filled"
                 Label="Editable Range with Action Buttons"
                 Margin="@ComputedMargin"
