@@ -9,6 +9,7 @@
             <MudText Typo="Typo.h6" Class="mb-2">Switch Controls</MudText>
 
             <MudSelect T="Color" Label="Color" Dense @bind-Value="_color">
+                <MudSelectItem Value="Color.Default" />
                 <MudSelectItem Value="Color.Primary" />
                 <MudSelectItem Value="Color.Secondary" />
                 <MudSelectItem Value="Color.Info" />
@@ -16,7 +17,6 @@
                 <MudSelectItem Value="Color.Warning" />
                 <MudSelectItem Value="Color.Error" />
                 <MudSelectItem Value="Color.Dark" />
-                <MudSelectItem Value="Color.Default" />
             </MudSelect>
 
             <MudSelect T="Size" Label="Size" Dense Class="mt-2" @bind-Value="_size">
@@ -82,7 +82,7 @@
 
 @code {
     // appearance
-    private Color _color = Color.Primary;
+    private Color _color = Color.Default;
     private Size _size = Size.Medium;
 
     // behavior
