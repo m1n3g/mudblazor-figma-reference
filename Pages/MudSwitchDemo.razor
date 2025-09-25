@@ -40,8 +40,9 @@
 
             <MudDivider Class="my-3" />
 
-            <!-- Readonly toggle (applies to the live switch) -->
+            <!-- Toggles (apply to live switch) -->
             <MudSwitch Color="Color.Primary" @bind-Value="_readOnly">Read only</MudSwitch>
+            <MudSwitch Color="Color.Primary" @bind-Value="_disabled">Disabled</MudSwitch>
         </MudPaper>
     </MudItem>
 
@@ -50,7 +51,6 @@
         <MudPaper Class="pa-5">
             <MudText Typo="Typo.h6" Class="mb-2">Content Placement</MudText>
 
-            <!-- Pick the placement (IMPORTANT: use Option + SelectedOption and a field, not the enum name) -->
             <MudRadioGroup T="Placement" Color="Color.Primary"
                            @bind-Value="_labelPlacement">
                 <MudStack>
@@ -65,11 +65,12 @@
 
             <MudDivider Class="my-4" />
 
-            <!-- Live preview: MudSwitch handles label positioning via LabelPlacement -->
+            <!-- Live preview -->
             <MudSwitch T="bool"
                        Color="@_color"
                        Size="@_size"
                        ReadOnly="@_readOnly"
+                       Disabled="@_disabled"
                        ThumbIcon="@(_useThumbIcon ? _thumbIcon : null)"
                        @bind-Value="_demoValue"
                        LabelPlacement="@_labelPlacement">
@@ -82,10 +83,11 @@
 @code {
     // appearance
     private Color _color = Color.Primary;
-    private Size _size = Size.Medium;   // default: Medium
+    private Size _size = Size.Medium;
 
     // behavior
     private bool _readOnly;
+    private bool _disabled;   // <--- NEW
 
     // thumb icon
     private bool _useThumbIcon;
@@ -94,6 +96,6 @@
     // live value
     private bool _demoValue;
 
-    // label placement (FIELD — don’t name it 'Placement', that collides with the enum type)
+    // label placement
     private Placement _labelPlacement = Placement.Right;
 }
